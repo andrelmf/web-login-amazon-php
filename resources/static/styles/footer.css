@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;1,300&display=swap');
+
+footer {
+    color: var(--color-neutral-40);
+    gap: 1rem;
+}
+
+.footer-link {
+    text-decoration: none;
+}
+
+#footer_content {
+    display: flex;
+    align-content: center;
+    background-color: var(--color-neutral-10);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1rem;
+    border-radius: 50px;
+}
+
+/* Footer - Siga Nossas Redes Sociais */
+#footer-siga-nossas-redes-sociais {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+} 
+
+#footer_social_media {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#footer_social_media_contate-nos .footer-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: var(--color-neutral-40);
+    border-radius: 50%;
+    transition: all 0.2s;
+    
+}
+
+
+#footer-siga-nossas-redes-sociais .footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: var(--color-neutral-40);
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+
+#footer-siga-nossas-redes-sociais .footer-link i {
+    font-size: 1.25rem;    
+}
+
+#footer-siga-nossas-redes-sociais .footer-link:hover {
+    opacity: 0.8;
+}
+
+#instagram {
+    background: linear-gradient(#7f37c9, #ff2992, #ff9807);
+}
+
+#facebook {
+    background-color: #4267b3;
+}
+
+#whatsapp {
+    background-color: #25d366;
+}
+
+#youtube {
+    background-color: #FF0000;
+}
+
+#linkedin {
+    background-color: #0A66C2;  
+}
+
+/* Footer - Páginas*/
+
+#footer-list-paginas{
+display: flex;
+justify-content: center;
+}
+
+/* Footer - Contatos*/
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list .footer-link {
+    color: var(--color-neutral-30);
+    transition: all 0.4s;
+    align-content:start;
+}
+
+.footer-list .footer-link:hover {
+    color: var(--color-font-default);
+}
+
+.title-footer{
+    color: var(--color-font-default);
+}
+
+/* Footer - Receba Novidades */
+#footer_receba_novidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+#footer_receba_novidades p {
+    color: var(--color-neutral-30);
+}
+
+#input_group {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-neutral-0);
+    border-radius: 4px;
+}
+
+#input_group input {
+    all: unset;
+    padding: 1rem;
+    width: 100%;
+}
+
+#input_group button {
+    background-color: var(--color-button-orange);
+    border: none;
+    color: var(--color-neutral-40);
+    padding: 0px 1.25rem;
+    font-size: 1.125rem;
+    height: 100%;
+    border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+#input_group button:hover {
+    background: var(--color-button-orange-20);
+    opacity: 0.8;
+}
+
+#footer_copyright {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-neutral-0);
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    font-weight: 100;
+}
+
+/* Botão Flutuante - De volta ao Topo */
+.botao-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #e59b34;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+  }
+  
+  .botao-flutuante:hover {
+    background-color: #ca812c;
+  }
+
+/* Responsive */
+@media screen and (max-width: 1000px) {
+    #footer_content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #footer_receba_novidades{
+        padding: 1rem;
+        grid-column: span 3;
+    }
+
+    #footer_receba_novidades #input_group{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    #footer_content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    #footer_receba_novidades {
+      grid-column: unset;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    #footer_content {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 3rem 2rem;
+    }
+  }
