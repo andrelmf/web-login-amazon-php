@@ -15,7 +15,7 @@
 $usuario = 'root';
 $senha = '';
 $database = 'login';
-$host = 'localhost:3308';
+$host = 'localhost:3306';
 
 $mysqli = new mysqli($host, $usuario, $senha, $database);
 $pdo = new PDO("mysql:dbname=".$database.";host=".$host, $usuario, $senha);

@@ -1,6 +1,6 @@
 <?php
 $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
-$email = filter_input(INPUT_POST, 'email',FILTER_SANITIZE_EMAIL);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $senha = filter_input(INPUT_POST, 'senha');
 
 if($email){
@@ -11,19 +11,20 @@ if($email){
     $sql->execute();
 
     if($sql->rowCount() === 0){
+        // Hash da senha
+        $hashedsenha = password_hash($senha, PASSWORD_DEFAULT);
+
         $sql = $pdo->prepare("INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)");
         $sql->bindValue(':nome', $nome);
         $sql->bindValue(':email', $email);
-        $sql->bindValue( ':senha', $senha);
+        $sql->bindValue(':senha', $hashedsenha); // Armazena a senha com hash no banco
         $sql->execute();
 
         echo $sucessoCadastrar = "";
         // header("Location: index.php");
-        
-    }else{
+    } else {
         echo $falhaCadastrar = "";
         // header("Location: index.php");
-
     }
 }
 ?>

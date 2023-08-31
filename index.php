@@ -1,35 +1,60 @@
 <?php
 
-if (isset($_POST['email']) || isset($_POST['senha'])){
+// if (isset($_POST['email']) || isset($_POST['senha'])){
 
-        include('./config/conexao.php');
+//         $email = $mysqli->real_escape_string($_POST['email']);
+//         $senha = $mysqli->real_escape_string($_POST['senha']);
 
-        $email = $mysqli->real_escape_string($_POST['email']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
+//         $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
+//         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
 
-        $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+//         $quantidadeRegistro = $sql_query->num_rows; // Me retorna a Qtd. de linhas da consulta
 
-        $quantidadeRegistro = $sql_query->num_rows; // Me retorna a Qtd. de linhas da consulta
+//         if($quantidadeRegistro == 1){
 
-        if($quantidadeRegistro == 1){
+//             $usuario = $sql_query->fetch_assoc();
 
-            $usuario = $sql_query->fetch_assoc();
+            // if(!isset($_SESSION)){ // Se não existir uma sessão, vai começar uma nova.
+            //     session_start();
+            // }
 
-            if(!isset($_SESSION)){ // Se não existir uma sessão, vai começar uma nova.
-                session_start();
-            }
+            // $_SESSION['id'] = $usuario['id'];
+            // $_SESSION['nome'] = $usuario['nome'];
 
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
+            //     header("Location: logado.php");
 
-                header("Location: logado.php");
+//         } else {
+//             $falhalogin = "";
+//         }
+    
+//     }
 
+if(isset($_POST['email'])){
+    include('./config/conexao.php');
+
+    $email = $mysqli->real_escape_string($_POST['email']);
+    $senha = $mysqli->real_escape_string($_POST['senha']);
+
+    $sql_code = "SELECT * FROM usuario WHERE email = '$email' LIMIT 1";
+    $sql_exec = $mysqli->query($sql_code) or die($mysqli->error);
+
+    $usuario = $sql_exec->fetch_assoc();
+   
+    if(password_verify($hashedsenha, $usuario['senha'])){
+        if(!isset($_SESSION)){ // Se não existir uma sessão, vai começar uma nova.
+            session_start();
+        }
+
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['nome'] = $usuario['nome'];
+
+            header("Location: logado.php");
         } else {
             $falhalogin = "";
         }
+
     
-    }
+}
 
 ?>
 
